@@ -1,13 +1,84 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+ /* base styles  */
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+}
+body{
+  padding: 0 2rem;
+}
+button {
+  margin: 1rem 0;
+  margin-right: 1rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* navigation section */
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 1042px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
 }
+.navbar h1 {
+  color: #1882fc;
+}
+.navbar .links {
+  margin-left: auto;
+}
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+}
+.navbar a:hover {
+  color:#003099;
+  font-weight: 700;
+}
+
+/* blog section */
+.blog-list{
+  align-items: center;
+  max-width: 1248px;
+  margin:auto;
+}
+.blog-content {
+  margin: 10px 0;
+  padding: 20px 0;
+}
+.blog-preview{
+  margin: 2rem;
+  box-shadow: 3px 3px 8px 1px rgba(5, 5, 5, .5);
+  border-radius: 5px;
+  padding: 10px;
+}
+.blog-preview:hover{
+  scale: 1.01;
+  background-color: #fcfded;
+}
+.blog-author {
+  padding: 5px 0;
+  font-size: small;
+}
+.blog-title {
+  color:#fc7f18
+}
+.blog-title-main{
+ color: rgb(61, 61, 61);
+ text-align: center;
+ font-size: xx-large;
+ font-weight: 900;
+ margin-top: 3rem;
+ margin-bottom: 1rem;
+}
+
+ /* footer */
+ .footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid rgb(238, 238, 238);
+ }
