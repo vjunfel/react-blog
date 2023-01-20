@@ -15,6 +15,19 @@ button {
   margin-right: 1rem;
 }
 
+.delete-button {
+  padding: 10px;
+  background-color: #d8d8d8;
+  color:#1f1f1f;
+  border:none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.delete-button:hover {
+  background-color: #fc7f18;
+  color:#f2f2f2;
+}
+
 /* navigation section */
 .navbar {
   padding: 20px;
@@ -47,8 +60,8 @@ button {
   margin:auto;
 }
 .blog-content {
-  margin: 10px 0;
-  padding: 20px 0;
+  margin: 5px 0;
+  padding: 10px 0;
 }
 .blog-preview{
   margin: 2rem;
@@ -58,7 +71,7 @@ button {
 }
 .blog-preview:hover{
   scale: 1.01;
-  background-color: #fcfded;
+  background-color: #fdfdf6;
 }
 .blog-author {
   padding: 5px 0;
@@ -76,8 +89,47 @@ button {
  margin-bottom: 1rem;
 }
 
+ /* Spinner */
+ .data {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+ .spinner-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+ }
+.spinner img{
+  width: 80px;
+}
+
+ /* Personal message */
+ .message {
+  max-width: 1024px;
+  margin:2rem auto;
+ }
+
+  /* Error Message */
+  .error-message {
+    font-size: x-large;
+    font-weight: 800;
+    padding-top: 10rem;
+    text-transform: capitalize;
+  }
+
  /* footer */
  .footer {
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   text-align: center;
   padding: 2rem;
   border-top: 1px solid rgb(238, 238, 238);

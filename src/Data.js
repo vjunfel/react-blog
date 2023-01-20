@@ -1,52 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BlogList from "./BlogList";
-import UserList from "./UserList";
+import Spinner from "./Spinner";
 
 function Data() {
-  const [users, setUsers] = useState([
-    { name: "Mario", age: "2" },
-    { name: "John", age: "3" },
-    { name: "Junfel", age: "5" },
-    { name: "Jerome", age: "7" },
-  ]);
-  const [blogs, setBlogs] = useState([
-    {
-      title: "My new website",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta porro neque nihil non sit.",
-      author: "jen",
-      id: 1,
-    },
-    {
-      title: "Welcome party",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta porro neque nihil non sit. Consequuntur ab aspernatur temporibus maxime explicabo earum sequi deleniti perferendis eum voluptas molestias iure, ad vitae voluptatem dicta.",
-      author: "junfel",
-      id: 2,
-    },
-    {
-      title: "Web dev top tips",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta porro neque nihil non sit. Consequuntur ab aspernatur temporibus maxime explicabo earum sequi deleniti perferendis eum voluptas molestias iure, ad vitae voluptatem dicta, deserunt animi repellendus asperiores aut natus sunt architecto. Atque minus optio error, repudiandae sequi saepe amet recusandae quibusdam.",
-      author: "jen",
-      id: 3,
-    },
-  ]);
+  const [blogs, setBlogs] = useState(null);
+  const [isPending, setIsPending] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      fetch("http://localhost:8000/blogs")
+        .then((res) => {
+          if (!res.ok) {
+            throw Error("Could not fetch the data for that resource");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          setBlogs(data);
+          setIsPending(false);
+          setError(null);
+        })
+        .catch((err) => {
+          setError(err.message);
+          setIsPending(false);
+        });
+    }, 1000);
+  }, []);
 
   return (
-    <>
-      <BlogList
-        className="blog-section"
-        blogs={blogs}
-        title="These are Blog Post"
-      />
-      <BlogList
-        className="blog-section"
-        blogs={blogs.filter((blog) => blog.author === "mario")}
-        title="Mario's Blog Post"
-      />
-    </>
+    <div className="data">
+      {error && <div className="error-message">{error}</div>}
+      {isPending && <Spinner />}
+      {blogs && (
+        <BlogList className="blog-section" blogs={blogs} title="Recent Blog" />
+      )}
+    </div>
   );
 }
-
 export default Data;

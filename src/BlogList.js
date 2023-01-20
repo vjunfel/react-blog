@@ -1,7 +1,3 @@
-// const BlogList = (props) => {
-//   const blogs = props.blogs;
-//   const title = props.title;
-
 const BlogList = ({ blogs, title }) => {
   return (
     <div className="blog-list">
@@ -11,10 +7,9 @@ const BlogList = ({ blogs, title }) => {
         <div className="blog-preview" key={blog.id}>
           <h3 className="blog-title">{blog.title}</h3>
           <p className="blog-author">
-            Written By :{"\u00A0"}
-            {blog.author.charAt(0).toUpperCase() + blog.author.slice(1)}
+            Written By : {blog.firstName} {blog.lastName}, {blog.age}
           </p>
-          <p className="blog-content">{blog.content}</p>
+          <p className="blog-content">{blog.body}</p>
         </div>
       ))}
     </div>
