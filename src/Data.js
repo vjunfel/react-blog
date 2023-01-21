@@ -1,32 +1,14 @@
 import React, { useEffect, useState } from "react";
 import BlogList from "./BlogList";
 import Spinner from "./Spinner";
+import useFetch from "./useFetch";
 
-function Data() {
-  const [blogs, setBlogs] = useState(null);
-  const [isPending, setIsPending] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    setTimeout(() => {
-      fetch("http://localhost:8000/blogs")
-        .then((res) => {
-          if (!res.ok) {
-            throw Error("Could not fetch the data for that resource");
-          }
-          return res.json();
-        })
-        .then((data) => {
-          setBlogs(data);
-          setIsPending(false);
-          setError(null);
-        })
-        .catch((err) => {
-          setError(err.message);
-          setIsPending(false);
-        });
-    }, 1000);
-  }, []);
+const Data = () => {
+  const {
+    data: blogs,
+    isPending,
+    error,
+  } = useFetch("http://localhost:8500/blogs");
 
   return (
     <div className="data">
@@ -37,5 +19,5 @@ function Data() {
       )}
     </div>
   );
-}
+};
 export default Data;
