@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BlogList from "./BlogList";
 import Spinner from "./Spinner";
 import useFetch from "./useFetch";
@@ -8,7 +8,7 @@ const Data = () => {
     data: blogs,
     isPending,
     error,
-  } = useFetch("http://localhost:8500/blogs");
+  } = useFetch("http://localhost:8000/blogs");
 
   return (
     <div className="data">
